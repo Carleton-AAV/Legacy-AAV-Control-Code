@@ -8,7 +8,7 @@ Adafruit_MCP4725 dac;
 RF24 radio(7, 8); // CE, CSN
 const byte address[6] = "00001";
 
-const int startSpeed = 1050;
+const int startSpeed = 1050; //starting voltage, should be no movement
 
 int x = startSpeed;
 
@@ -30,8 +30,8 @@ void loop() {
 
     if (*text == 'w'){
       dac.setVoltage(x, false);
-      if (x < 3000){
-        x = x + 30;
+      if (x < 3000){              //set maximum voltage here
+        x = x + 30;               //set acceleration here
       }
       delay(100);
       dac.setVoltage(startSpeed, false);
